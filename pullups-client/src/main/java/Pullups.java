@@ -1,7 +1,14 @@
+import demon.entity.Day;
+import demon.entity.Program;
+import demon.util.HibernateUtil;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import org.hibernate.Session;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Pullups extends Application {
 
@@ -15,5 +22,8 @@ public class Pullups extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
     }
+
+
 }
