@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="apRules" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demon.common.controller.RulesController"
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <children>
+      <ScrollPane layoutX="61.0" layoutY="43.0" prefHeight="382.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <content>
+            <VBox prefHeight="527.0" prefWidth="572.0" spacing="7.0">
+               <children>
+                  <Label text="Правила программы">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label text="1. Сделайте тест. Он позволит вам выбрать соответствующий тренировочный цикл." />
+                  <Label text="2. На основании теста вы выбираете цикл, с которого начнется тренировка. Если вы сделали, например, 7 подтягиваний, то начать цикл следует из 6-8. Если сделали 12, то начинаете с цикла 12-15, и т.д." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="3. Выполняйте тренировку согласно рекомендаций данного цикла. Помните, что между тренировками нужно делать минимум один день перерыва, а после 3 дней – паузу как минимум на 2 дня. Мышцы не любят перенапряжения и если вы переборщите с занятиями, то ваша работоспособность вместо того, чтобы возрасти – начнет падать. Некоторые люди могут заметить, что в их случае длительные перерывы приводят к лучшим результатам. Стоит также помнить, что с возрастом время восстановления увеличивается. Вместо того, чтобы перенапрягаться и тренироваться каждый день, в дни без подтягиваний занимайтесь отжиманиями. " textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="4. Если во время цикла вы не смогли выполнить цикл упражнений данного дня – не волнуйтесь. Сделайте перерыв на 2-3 дня и начните данный цикл сначала. С каждым таким подходом ваша сила и выносливость будут расти и в конце концов вы достигнете успеха." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="5. Когда вы удачно завершите данный цикл – сделайте перерыв для восстановления перед тем, как приступить к повторному тесту. Такой перерыв не должен длиться меньше 2 дней." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="6. После перерыва выполните тест. Помните, что перед тестом нужно немного размяться, а после него – сделать паузу для восстановления (минимум 2 дня). Тест покажет вам – какой цикл выбрать дальше. Во время теста не хитрите, лучше повторить цикл еще раз, чем переходить к следующему без соответствующей подготовки." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="7. После перерыва начните выполнение следующего цикла." />
+                  <Label text="8. Повторяйте эту схему пока не перейдете к последнему циклу – 25-30 подтягиваний. Теперь вы находитесь в хорошей форме. Можете попробовать тренироваться дальше, чтобы достичь 35-ти, но уровень в 30 подтягиваний достаточен для поддерживания хорошего физического состояния и красивой мускулатуры." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="Удачи!" />
+               </children>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Button fx:id="btnBack" layoutX="23.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnBack" text="Назад" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="apRulesTest" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demon.common.controller.RulesTestController"
+            AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+   <children>
+      <ScrollPane layoutX="41.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="50.0">
+         <content>
+            <VBox prefHeight="387.0" prefWidth="581.0" spacing="7.0">
+               <children>
+                  <Label text="Тест подтягиваний">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Label prefHeight="51.0" prefWidth="579.0" text="Тест подтягиваний – это неотъемлемая часть всей программы 35 подтягиваний. Именно благодаря этому тесту вы будете выполнять программу, соответствующую вашей актуальной физической форме." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="Тест нужно выполнять перед началом программы, чтобы понять – с какого тренировочного цикла следует начать программу." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="Повторять его нужно после каждого цикла, чтобы определить – нужно ли повторить текущий цикл или можно переходить к следующему." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="Перед началом теста убедитесь, что у вас нет никаких противопоказаний по здоровью для тренировки подтягиваний. Если возникают какие-либо сомнения – проконсультируйтесь с врачом. Помните также о разминке – растяжка, взмахи и обороты туловища будут очень полезны, а если вы уже находитесь в хорошей форме – сделайте несколько подтягиваний для разминки." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="Тест очень простой. Достаточно выполнить столько подтягиваний, сколько вы сможете. Помните, что подтягиваться нужно как можно более правильно. Не обманывайте себя. Если вы будете неправильно подтягиваться, то выберете не ту тренировку и польза от нее будет минимальной." textAlignment="JUSTIFY" wrapText="true" />
+                  <Label text="Помните, что перед и после каждого теста нужно сделать как минимум двухдневный перерыв. Не выполняйте тест сразу после окончания цикла и не переходите сразу к следующему. Слишком интенсивная тренировка мышц замедляет их развитие и может даже совсем остановить его. После нагрузки мышцам нужно дать время на восстановление." textAlignment="JUSTIFY" wrapText="true" />
+               </children>
+               <padding>
+                  <Insets left="5.0" />
+               </padding>
+            </VBox>
+         </content>
+      </ScrollPane>
+      <Button layoutX="22.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnBack" text="Назад" />
+   </children>
+</AnchorPane>

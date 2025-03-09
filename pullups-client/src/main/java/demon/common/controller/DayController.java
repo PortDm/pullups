@@ -1,22 +1,22 @@
 package demon.common.controller;
 
 import demon.entity.Day;
-import demon.entity.Program;
-import demon.util.HibernateUtil;
+
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
-import org.hibernate.Session;
-import org.hibernate.query.Query;
+import javafx.scene.layout.AnchorPane;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.awt.*;
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainController {
+public class DayController {
 
     @FXML
     private Label labelExecute;
@@ -32,7 +32,6 @@ public class MainController {
     private Label labelTouch5;
     @FXML
     private Label labelRestTime;
-
     @FXML
     private Label labelSecond;
     @FXML
@@ -41,23 +40,29 @@ public class MainController {
     private Button btnStart;
     @FXML
     private ProgressBar pbTimer;
+    @FXML
+    private Label labelDay;
+    @FXML
+    private Label labelCount;
+    @FXML
+    private Label labelStep;
+    @FXML
+    private Label labelStepLabel;
+    @FXML
+    private AnchorPane apDay;
 
+    private final int COUNT_MINUTE = 1;
+    private final int COUNT_SECOND = 59;
 
     private int step = 0;
-    private final int COUNT_SECOND = 2;
-    private final int COUNT_MINUTE = 1;
-
     private int timeSecond;
     private int timeMinute;
     private boolean isRunning = false;
+    private String nameProgram;
 
     public void initialize() {
-        loadStartData();
-        loadFromDbDay();
-        setTouches();
         stepping();
         pbTimer.setProgress(1);
-
     }
 
     private Timer timerOneSecond;
@@ -71,6 +76,8 @@ public class MainController {
             isRunning = false;
             btnStart.setText("Выполнил");
             labelExecute.setText("Выполняй");
+            labelStep.setVisible(true);
+            labelStepLabel.setVisible(true);
         }
     }
 
@@ -82,6 +89,8 @@ public class MainController {
             isRunning = true;
             btnStart.setText("Стоп");
             labelExecute.setText("Отдыхай");
+            labelStep.setVisible(false);
+            labelStepLabel.setVisible(false);
 
             timerOneSecond.schedule(new TimerTask() {
                 @Override
@@ -98,33 +107,40 @@ public class MainController {
         switch (step++) {
             case 0:
                 labelTouch1.setStyle("-fx-font-size: 26");
+                labelStep.setText(String.valueOf(step));
                 break;
             case 1:
                 labelTouch2.setStyle("-fx-font-size: 26");
                 labelTouch1.setStyle("-fx-font-size: 13; -fx-text-fill: green;");
+                labelStep.setText(String.valueOf(step));
                 break;
             case 2:
                 labelTouch3.setStyle("-fx-font-size: 26");
                 labelTouch2.setStyle("-fx-font-size: 13; -fx-text-fill: green;");
+                labelStep.setText(String.valueOf(step));
                 break;
             case 3:
                 labelTouch4.setStyle("-fx-font-size: 26");
                 labelTouch3.setStyle("-fx-font-size: 13; -fx-text-fill: green;");
+                labelStep.setText(String.valueOf(step));
                 break;
             case 4:
                 labelTouch5.setStyle("-fx-font-size: 26");
                 labelTouch4.setStyle("-fx-font-size: 13; -fx-text-fill: green;");
+                labelStep.setText(String.valueOf(step));
                 break;
             case 5:
                 labelTouch5.setStyle("-fx-font-size: 13; -fx-text-fill: green;");
                 labelRestTime.setStyle("-fx-font-size: 26");
                 btnStart.setDisable(true);
                 labelExecute.setText("Молодец");
+                labelStep.setVisible(false);
+                labelStepLabel.setVisible(false);
         }
     }
 
     private void setTimerLabel() {
-        String timeSecondStr = timeSecond < 10 ? "0" +timeSecond : String.valueOf(timeSecond);
+        String timeSecondStr = timeSecond < 10 ? "0" + timeSecond : String.valueOf(timeSecond);
         String timeMinuteStr = timeMinute < 10 ? "0" + timeMinute : String.valueOf(timeMinute);
         labelSecond.setText(timeSecondStr);
         labelMinute.setText(timeMinuteStr);
@@ -137,6 +153,9 @@ public class MainController {
                 isRunning = false;
                 btnStart.setText("Выполнил");
                 labelExecute.setText("Выполняй");
+                labelStep.setVisible(true);
+                labelStepLabel.setVisible(true);
+                Toolkit.getDefaultToolkit().beep();
             } else {
                 timeMinute--;
                 timeSecond = COUNT_SECOND;
@@ -147,54 +166,41 @@ public class MainController {
     }
 
     private void setProgressBar() {
-        int leftSecond = ((timeMinute * (COUNT_SECOND+1)) + timeSecond);
+        int leftSecond = ((timeMinute * (COUNT_SECOND + 1)) + timeSecond);
         int countSecondAll = (COUNT_MINUTE + 1) * (COUNT_SECOND + 1);
         pbTimer.setProgress((double) leftSecond / countSecondAll);
     }
 
-    private Day day;
 
-    private void loadFromDbDay() {
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            session.beginTransaction();
-            Query<Program> queryProgram = session.createQuery("from Program where nameProgram = '9-11 подтягиваний'", Program.class);
-            Program program = queryProgram.getSingleResult();
-            day = program.getDays().getFirst();
-            session.getTransaction().commit();
-        }
-    }
-
-    private void setTouches() {
-        labelTouch1.setText("Подход 1:  " + day.getTouch1());
-        labelTouch2.setText("Подход 2:  " + day.getTouch2());
-        labelTouch3.setText("Подход 3:  " + day.getTouch3());
-        labelTouch4.setText("Подход 4:  " + day.getTouch4());
-        labelTouch5.setText("Подход 5:  " + day.getTouch5());
+    public void setTouches(Day day) {
+        labelDay.setText(day.getNameDay());
+        labelTouch1.setText(day.getTouch1());
+        labelTouch2.setText(day.getTouch2());
+        labelTouch3.setText(day.getTouch3());
+        labelTouch4.setText(day.getTouch4());
+        labelTouch5.setText(day.getTouch5());
         labelRestTime.setText(String.valueOf(day.getRestTime()));
+        calcCount(day);
+        nameProgram = day.getProgram().getNameProgram();
     }
 
-    private static void loadStartData() {
-        Day day = new Day();
-        day.setNameDay(1);
-        day.setRestTime("Минимум 1 день перерыва");
-        day.setTouch1("3 раза");
-        day.setTouch2("5 раз");
-        day.setTouch3("3 раза");
-        day.setTouch4("3 раза");
-        day.setTouch5("миниму 5 раз");
+    private void calcCount(Day day) {
+        int count = Integer.parseInt(day.getTouch1()) +
+                Integer.parseInt(day.getTouch2()) +
+                Integer.parseInt(day.getTouch3()) +
+                Integer.parseInt(day.getTouch4()) +
+                Integer.parseInt(day.getTouch5());
+        labelCount.setText(String.valueOf(count));
+    }
 
-        List<Day> days = new ArrayList<>();
-        days.add(day);
+    public void onBtnBack() throws IOException {
+        AnchorPane apWrap = (AnchorPane) apDay.getParent();
+        FXMLLoader loaderDayChooser = new FXMLLoader(ProgramChooseController.class.getResource("/demon/common/view/day-choose-view.fxml"));
+        apWrap.getChildren().clear();
+        apWrap.getChildren().add(loaderDayChooser.load());
 
-        Program program = new Program();
-        program.setNameProgram("9-11 подтягиваний");
-
-        try (Session session = HibernateUtil.getSessionFactory().openSession()) {
-            session.beginTransaction();
-            session.persist(day);
-            program.setDays(days);
-            session.persist(program);
-            session.getTransaction().commit();
-        }
+        DayChooseController dayChooserController = loaderDayChooser.getController();
+        dayChooserController.setNameProgram(nameProgram);
+        dayChooserController.loadDbProgramByName();
     }
 }

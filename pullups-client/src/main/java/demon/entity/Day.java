@@ -20,7 +20,7 @@ public class Day {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int nameDay;
+    private String nameDay;
     private String restTime;
 
     private String touch1;
@@ -29,5 +29,6 @@ public class Day {
     private String touch4;
     private String touch5;
 
-
+    @ManyToOne
+    private Program program;
 }

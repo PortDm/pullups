@@ -14,10 +14,10 @@
 
     <properties>
         <app.fullName>Pull-Ups</app.fullName>
-        <app.shortName>Pull-Ups Distrib</app.shortName>
-        <app.copyrightYears>2024</app.copyrightYears>
-        <app.finalName>pullups-distribution</app.finalName>
-        <app.defaultPackage>demon.distribution</app.defaultPackage>
+        <app.shortName>Pull-Ups</app.shortName>
+        <app.copyrightYears>2025</app.copyrightYears>
+        <app.finalName>pullups</app.finalName>
+        <app.defaultPackage>demon</app.defaultPackage>
         <app.mainClass>${app.defaultPackage}.App</app.mainClass>
         <app.dependencyDirectory>libs</app.dependencyDirectory>
 

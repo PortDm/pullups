@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="apDay" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/null" xmlns:fx="http://javafx.com/fxml/1" fx:controller="demon.common.controller.DayController">
+   <children>
+      <Button fx:id="btnStart" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" onAction="#onBtnStart" prefHeight="84.0" prefWidth="552.0" text="Выполнил">
+         <font>
+            <Font size="33.0" />
+         </font>
+      </Button>
+      <ProgressBar fx:id="pbTimer" layoutX="346.0" layoutY="151.0" prefWidth="200.0" progress="0.0" />
+      <GridPane alignment="CENTER" gridLinesVisible="true" layoutX="24.0" layoutY="55.0" prefHeight="223.0" prefWidth="253.0" style="ce: black;">
+        <columnConstraints>
+            <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="192.0" minWidth="10.0" prefWidth="192.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="122.0" minWidth="10.0" prefWidth="61.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label fx:id="labelTouch2" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <Label fx:id="labelTouch4" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+            <Label fx:id="labelTouch5" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <Label fx:id="labelTouch3" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <Label fx:id="labelTouch1" text="Label" GridPane.columnIndex="1" />
+            <Label fx:id="labelRestTime" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+            <Label text="Подход 1" />
+            <Label text="Подход 4" GridPane.rowIndex="3" />
+            <Label text="Подход 3" GridPane.rowIndex="2" />
+            <Label text="Подход 2" GridPane.rowIndex="1" />
+            <Label text="Подход 5 (максимум, но мин.)" GridPane.rowIndex="4" />
+            <Label text="Перерыв (мин. дней)" GridPane.rowIndex="5" />
+            <Label text="Всего за день" GridPane.rowIndex="6" />
+            <Label fx:id="labelCount" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+         </children>
+      </GridPane>
+      <GridPane layoutX="369.0" layoutY="82.0" prefHeight="46.0" prefWidth="165.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="107.0" minWidth="10.0" percentWidth="0.0" prefWidth="64.0" />
+            <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" maxWidth="96.0" minWidth="8.0" percentWidth="0.0" prefWidth="14.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="238.0" minWidth="10.0" prefWidth="87.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label text=":" GridPane.columnIndex="1">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelMinute" text="00">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelSecond" text="00" GridPane.columnIndex="2">
+               <font>
+                  <Font size="50.0" />
+               </font>
+            </Label>
+         </children>
+      </GridPane>
+      <Label fx:id="labelExecute" alignment="CENTER" layoutX="380.0" layoutY="200.0" maxWidth="1.7976931348623157E308" prefHeight="29.0" prefWidth="132.0" text="Выполняй" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <HBox alignment="CENTER" layoutX="346.0" layoutY="27.0" prefHeight="29.0" prefWidth="180.0">
+         <children>
+            <Label prefHeight="29.0" prefWidth="61.0" text="День">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelDay" text="0">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <HBox layoutX="409.0" layoutY="229.0" prefHeight="29.0" prefWidth="103.0" spacing="10.0">
+         <children>
+            <Label fx:id="labelStep" text="0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="labelStepLabel" text="подход">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </HBox>
+      <Button layoutX="24.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBtnBack" prefHeight="26.0" prefWidth="59.0" text="Назад" />
+   </children>
+</AnchorPane>
